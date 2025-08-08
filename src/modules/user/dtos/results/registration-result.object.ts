@@ -1,5 +1,5 @@
 import { createUnionType, ObjectType } from '@nestjs/graphql';
-import { EmailAlreadyTakenError } from '../errors/email-already-taken-error.object';
+import { PseudoAlreadyTakenError } from '../errors/pseudo-already-taken-error.object';
 
 @ObjectType()
 export class UserRegistrationSuccess {
@@ -9,5 +9,5 @@ export class UserRegistrationSuccess {
 export const UserRegistrationResult = createUnionType({
   name: 'UserRegistrationResult',
   description: 'User registration result',
-  types: () => [UserRegistrationSuccess, EmailAlreadyTakenError],
+  types: () => [UserRegistrationSuccess, PseudoAlreadyTakenError],
 });

@@ -7,7 +7,7 @@ import { Public } from '../../common/decorators';
 import { ApiValidationException } from 'common/decorators/api-validation-exception.decorator';
 import { ApiUnknownErrorException } from 'common/decorators/api-unknown-error-exception.decorator';
 import { TemplatedApiException } from '../../common/decorators/templated-api-exception.decorator';
-import { EmailAlreadyTakenException } from './exceptions/email-already-taken.exception';
+import { PseudoAlreadyTakenException } from './exceptions/pseudo-already-taken.exception';
 
 @Controller('users')
 @ApiTags('Users')
@@ -18,7 +18,7 @@ export class UserController {
   @Public()
   @ApiValidationException()
   @TemplatedApiException(
-    () => new EmailAlreadyTakenException('jhonedoes@example.com'),
+    () => new PseudoAlreadyTakenException('jhonedoes@example.com'),
   )
   @ApiUnknownErrorException()
   @ApiCreatedResponse({

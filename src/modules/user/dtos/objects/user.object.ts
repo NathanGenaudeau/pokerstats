@@ -6,30 +6,13 @@ export class UserObject {
   id!: string;
 
   /**
-   * User's email
+   * User's pseudo
    *
-   * @example jhonedoe@example.com
+   * @example jhonedoe
    * @type {string}
    * @memberof UserDto
    */
-  email!: string;
-
-  /**
-   * Name of user
-   *
-   * @type {string}
-   * @memberof UserObject
-   */
-  name!: string;
-
-  /**
-   * Is user verified
-   *
-   * @example true
-   * @type {boolean}
-   * @memberof UserDto
-   */
-  verified!: boolean;
+  pseudo!: string;
 
   /**
    * User join date

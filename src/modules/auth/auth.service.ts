@@ -15,7 +15,7 @@ export class AuthService {
 
   async loginUser(loginDto: LoginDto): Promise<LoginResponseDto> {
     const { login, password } = loginDto;
-    const user = await this.userService.findUserByEmail(login);
+    const user = await this.userService.findUserByPseudo(login);
     if (!user) {
       throw new InvalidLoginOrPasswordException();
     }

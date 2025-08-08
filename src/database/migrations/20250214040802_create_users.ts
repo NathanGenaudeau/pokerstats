@@ -7,9 +7,8 @@ export async function up(db: Kysely<DB>): Promise<void> {
   await db.schema
     .createTable(tableName)
     .addColumn('id', 'uuid', (col) => col.primaryKey())
-    .addColumn('email', 'text', (col) => col.unique())
+    .addColumn('pseudo', 'text', (col) => col.unique())
     .addColumn('password_hash', 'text')
-    .addColumn('verified', 'boolean', (col) => col.defaultTo(false))
     .addColumn('created_at', 'timestamp', (col) =>
       col.defaultTo(sql`now()`).notNull(),
     )

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { RegisterUserDto } from './dtos/register-user.dto';
 import bcrypt from 'bcrypt';
 import { UserObject } from './dtos/objects/user.object';
-import { EmailAlreadyTakenException } from './exceptions/email-already-taken.exception';
+import { PseudoAlreadyTakenException } from './exceptions/pseudo-already-taken.exception';
 import { UserRepositoy } from './repository/user.respository';
 
 const BCRYPT_HASH_ROUNDS = 10;
@@ -18,28 +18,28 @@ export class UserService {
    * @memberof UserService
    */
   async registerUser(registerUser: RegisterUserDto) {
-    const { email, password } = registerUser;
+    const { pseudo, password } = registerUser;
 
-    const prevUser = await this.userRepositoy.getUserByEmail(
-      email.toLowerCase(),
+    const prevUser = await this.userRepositoy.getUserByPseudo(
+      pseudo.toLowerCase(),
     );
 
     if (prevUser) {
-      throw new EmailAlreadyTakenException(email);
+      throw new PseudoAlreadyTakenException(pseudo);
     }
 
     const passwordHash = await bcrypt.hash(password, BCRYPT_HASH_ROUNDS);
 
     const user = await this.userRepositoy.createUser({
-      email: email.toLowerCase(),
+      pseudo: pseudo.toLowerCase(),
       passwordHash,
     });
 
     return user.toDto();
   }
 
-  async findUserByEmail(email: string) {
-    return this.userRepositoy.getUserByEmail(email);
+  async findUserByPseudo(pseudo: string) {
+    return this.userRepositoy.getUserByPseudo(pseudo);
   }
 
   async findUserById(id: string) {

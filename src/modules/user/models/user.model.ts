@@ -3,19 +3,15 @@ import { UserDto } from '../dtos/user.dto';
 
 export class UserModel implements User {
   id: string;
-  name: string;
-  email: string;
+  pseudo: string;
   passwordHash: string;
-  verified: boolean;
   createdAt: Date;
   updatedAt: Date;
 
   constructor(user: User) {
     this.id = user.id;
-    this.name = user.name;
-    this.email = user.email;
+    this.pseudo = user.pseudo;
     this.passwordHash = user.passwordHash;
-    this.verified = user.verified;
     this.createdAt = user.createdAt;
     this.updatedAt = user.updatedAt;
   }
@@ -32,9 +28,7 @@ export class UserModel implements User {
   toDto(): UserDto {
     return {
       id: this.id,
-      name: this.name,
-      email: this.email,
-      verified: this.verified,
+      pseudo: this.pseudo,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     };

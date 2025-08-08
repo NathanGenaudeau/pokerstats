@@ -4,6 +4,6 @@ import { DisplayableError } from 'common/dtos/errors/displayable-error.object';
 @ObjectType({
   implements: () => [DisplayableError],
 })
-export class EmailAlreadyTakenError implements DisplayableError {
+export class PseudoAlreadyTakenError implements DisplayableError {
   message!: string;
 }

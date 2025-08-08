@@ -35,10 +35,10 @@ export class UserRepositoy {
     return new UserModel(result);
   }
 
-  async getUserByEmail(email: string) {
+  async getUserByPseudo(pseudo: string) {
     const result = await this.db
       .selectFrom('users')
-      .where('email', '=', email.toLowerCase())
+      .where('pseudo', '=', pseudo.toLowerCase())
       .selectAll()
       .executeTakeFirst();
 

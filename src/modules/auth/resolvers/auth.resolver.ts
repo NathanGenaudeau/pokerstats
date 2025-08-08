@@ -15,7 +15,7 @@ export class AuthResolver {
 
   @Public()
   @Mutation(() => LoginResult, {
-    description: 'Login with email/password',
+    description: 'Login with pseudo/password',
   })
   async loginWithPassword(
     @Args('input') input: LoginInput,

@@ -8,9 +8,9 @@ import { IsNotEmpty } from 'class-validator';
  */
 export class LoginDto {
   /**
-   * Login should be email or username
+   * Login should be a pseudo
    *
-   * @example jhonedoe@example.com
+   * @example jhonedoe
    * @type {string}
    * @memberof LoginDto
    */

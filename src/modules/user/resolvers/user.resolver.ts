@@ -7,9 +7,9 @@ import {
 } from '../dtos/results/registration-result.object';
 import { UserService } from '../user.service';
 
-import { EmailAlreadyTakenException } from '../exceptions/email-already-taken.exception';
+import { PseudoAlreadyTakenException } from '../exceptions/pseudo-already-taken.exception';
 import { plainToClass } from 'class-transformer';
-import { EmailAlreadyTakenError } from '../dtos/errors/email-already-taken-error.object';
+import { PseudoAlreadyTakenError } from '../dtos/errors/pseudo-already-taken-error.object';
 import { RegisterUserInput } from '../dtos/inputs/register-user.input';
 import { User } from 'database/schema/users';
 import { UserModel } from '../models/user.model';
@@ -39,8 +39,8 @@ export class UserResolver {
       result.message = 'Success';
       return result;
     } catch (error) {
-      if (error instanceof EmailAlreadyTakenException) {
-        return plainToClass(EmailAlreadyTakenError, error);
+      if (error instanceof PseudoAlreadyTakenException) {
+        return plainToClass(PseudoAlreadyTakenError, error);
       }
       throw error;
     }
